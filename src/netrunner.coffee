@@ -38,7 +38,7 @@ formatNRDBResponse = (msg, card, opts) ->
    text += 'Type: ' + card.type + ' - ' + card.subtype + '\n'
    text += 'Faction: ' + card.faction + '\n'
    text += 'Set: ' + card.setname + '\n'
-   text += 'Text: ' + card.text.replace(/[\[|\]]/g, ':') + '\n'
+   text += card.text.replace(/[\[\|](.*?)[\]\|]/g, (':' + $&.toLowerCase() + ':'))
    text += 'NRDBURL: ' + card.url + '\n'
    text
    if !opts.noText
